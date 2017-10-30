@@ -20,6 +20,14 @@ setInterval(function(){
 setInterval(function(){
     link = links[i];
     if(i < links.length) {
+        if(link.href.includes('https://facebook.com/l.php?u=')){
+            var rep = link.href;
+            var ret = rep.replace("https://facebook.com/l.php?u=", "").replace(/%3A/g, ":").replace(/%2F/g, "/").replace(/%3F/g, "?").replace(/%3D/g, "=");
+            var rek = ret.substring(0, ret.indexOf('&h='));
+            //console.log(rek); //For displaying the found links
+            link.href = rek;
+            //cleaned += 1; //For displaying how many links were found
+        }
         if(link.href.includes('https://l.messenger.com/l.php?u=')){
             var rep = link.href;
             var ret = rep.replace("https://l.messenger.com/l.php?u=", "").replace(/%3A/g, ":").replace(/%2F/g, "/").replace(/%3F/g, "?").replace(/%3D/g, "=");
